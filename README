@@ -1,0 +1,45 @@
+Updates or future development
+===============================
+
+	To contribute or download any possible updates, check this out: 
+	
+		https://github.com/rgenito/Kohana-2.3-reCAPTCHA
+
+	Feel free to contact me any time: rgenito at proteushosting (dot net)
+
+
+Installation
+==============
+
+	To install this module, just copy these files into your Kohana module directory.
+	
+	
+Configuration
+===============
+
+	The configuration file is located in config/recaptcha.php. There you will setup your public key, private key, and option whether to use SSL or not. Get your public/private key from http://www.recaptcha.com.
+	
+	
+Usage
+=======
+
+	1.) First, create a new reCAPTCHA object:
+	
+		$recapt = new Recaptcha;
+		
+	2.) Afterwards, on the website where you want to display the reCAPTCHA frame, do:
+	
+		$recapt->render();
+		
+	3.) While processing that page's POST request, you can check if the reCAPTCHA response was invalid like so:
+	
+		$recapt = new Recaptcha;
+		if ($error_msg = $recapt->invalid())
+		{
+			echo "there was an error: $error_msg<br>";
+			// bring user back to the form, asking them to re-try inputting the reCAPTCHA text
+		}
+		else
+		{
+			// process POST as normal
+		}

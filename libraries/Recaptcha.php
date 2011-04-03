@@ -84,6 +84,14 @@ class Recaptcha_Core {
 	}
 
 	/**
+	 * @return  bool  whether or not the recaptcha form element was included in POST request array
+	 */
+	public function _isset()
+	{
+		return isset($_POST['recaptcha_challenge_field']);
+	}
+
+	/**
 	 * Checks if the user's recaptcha response was valid or not.
 	 * @return  string  the recaptcha error. NULL is returned if everything went OK :)
 	 */

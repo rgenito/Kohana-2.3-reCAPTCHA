@@ -43,3 +43,49 @@ Usage
 		{
 			// process POST as normal
 		}
+		
+	4.) During POST processing, if you want to check if your previous page asked for a user reCAPTCHA response:
+	
+		$recapt = new Recaptcha;
+		if ($recapt->_isset())
+		{
+			echo "i sure hope you entered a response!";
+		}
+
+
+Example
+=========
+
+<html>
+<body>
+
+<?php
+/**
+ * Note: I don't even know if this example works...I just coded it real quick for the README's purpose :)
+ */
+$re = new Recaptcha;
+if ($_POST)
+{
+	if ($re->_isset() && $re->invalid())
+	{
+		echo '<p style="font-color: #d00; font-weight: bold;">reCAPTCHA Response invalid: ';
+		// display the actual error message
+		echo $re->invalid();
+		echo '</p>';
+	}
+	else
+	{
+		echo '<p style="font-color: #0d0; font-weight: bold;">Your response is correct! Good job!</p>';
+	}
+	echo '<p>Try again? :D</p>';
+}
+?>
+
+<p>Let's play a fun game called "Enter-This-In-Correctly" :D</p>
+
+<div>
+	<?php echo $re->render(); ?>
+</div>
+
+</body>
+</html>
